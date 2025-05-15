@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pretty Little Jewelry</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Stripe.js for payment processing -->
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+  <!-- Header & Navbar -->
+  <header class="site-header">
+    <div class="navbar-container">
+      <div class="logo">
+        <img src="logo.png" alt="Pretty Little Jewelry Logo" class="logo-img" />
+        <div class="logo-text">Pretty Little Jewelry</div>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#earrings">Earrings</a></li>
+          <li><a href="#necklaces">Necklaces</a></li>
+          <li><a href="#rings">Rings</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cart-icon-container">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count">0</span>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+ <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Shopping Bag</h3>
+      <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items">
+      <div class="empty-cart-message">
+        <p>Your cart is empty</p>
+        <a href="#earrings" class="btn">Continue Shopping</a>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <div class="cart-total">
+        <span>Subtotal:</span>
+        <span class="total-price">Rs.0.00</span>
+      </div>
+      <button class="btn checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+ 
+<section id="home" class="hero">
+    <div class="hero-slider">
+      <!-- Slide 1 - Main Brand Slide -->
+      <div class="slide active">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">PRETTY<br>LITTLE<br>JEWELRY</h1>
+            <div class="hero-offer">
+              <span>20% OFF</span>
+            </div>
+            <a href="#earrings" class="btn">Shop Now</a>
+          </div>
+        </div>
+        <div class="hero-website">
+          <span>WWW.PRETTYLITTLEJEWELRY.COM</span>
+        </div>
+      </div>
+      
+      <!-- Slide 2 - New Arrivals -->
+      <div class="slide">
+        <img src="banner2jpg.jpg" alt="New Arrivals">
+        <div class="hero-content">
+          <div class="slide-tag">New Collection</div>
+          <h2>Discover Our Latest Designs</h2>
+          <p>Fresh styles just arrived in store</p>
+          <a href="#new-arrivals" class="btn">View New Arrivals</a>
+        </div>
+      </div>
+      
+      
+      <!-- Slide 3 - Featured Collection -->
+      <div class="slide">
+        <img src="banner4.jpg" alt="Featured Collection">
+        <div class="hero-content">
+          <div class="slide-tag">Bestseller</div>
+          <h2>Signature Collection</h2>
+          <p>Our most loved pieces this season</p>
+          <a href="#featured" class="btn">Explore Collection</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slider Controls -->
+    <div class="slider-controls">
+      <button class="prev-slide"><i class="fas fa-chevron-left"></i></button>
+      <div class="slider-dots"></div>
+      <button class="next-slide"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <!-- Earrings Collection -->
+  <section id="earrings" class="products-section">
+    <h2 class="section-title">Our Earrings Collection</h2>
+    <div class="products">
+      <!-- Product 1 -->
+      <div class="product" data-id="1" data-name="Crystal Stud Earrings" data-price="600.00">
+        <div class="product-images">
+          <img src="earring1a.jpg" alt="Crystal Stud Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring1a.jpg" alt="Thumb 1" class="active">
+            <img src="earring1b.jpg" alt="Thumb 2">
+            <img src="earring1c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Crystal Stud Earrings</h3>
+          <p class="price">Rs.600.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product" data-id="2" data-name="Pearl Drop Earrings" data-price="800.00">
+        <div class="product-images">
+          <img src="earring2a.jpg" alt="Pearl Drop Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring2a.jpg" alt="Thumb 1" class="active">
+            <img src="earring2b.jpg" alt="Thumb 2">
+            <img src="earring2c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Pearl Drop Earrings</h3>
+          <p class="price">Rs.800.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product" data-id="3" data-name="Gold Hoop Earrings" data-price="650.00">
+        <div class="product-images">
+          <img src="earring3a.jpg" alt="Gold Hoop Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring3a.jpg" alt="Thumb 1" class="active">
+            <img src="earring3b.jpg" alt="Thumb 2">
+            <img src="earring3c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Gold Hoop Earrings</h3>
+          <p class="price">Rs.650.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product" data-id="4" data-name="Sapphire Stud Earrings" data-price="980.00">
+        <div class="product-images">
+          <img src="earring4a.jpg" alt="Sapphire Stud Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring4a.jpg" alt="Thumb 1" class="active">
+            <img src="earring4b.jpg" alt="Thumb 2">
+            <img src="earring4c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Sapphire Stud Earrings</h3>
+          <p class="price">Rs.980.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product" data-id="5" data-name="Diamond Drop Earrings" data-price="750.00">
+        <div class="product-images">
+          <img src="earring5a.jpg" alt="Diamond Drop Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring5a.jpg" alt="Thumb 1" class="active">
+            <img src="earring5b.jpg" alt="Thumb 2">
+            <img src="earring5c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Diamond Drop Earrings</h3>
+          <p class="price">Rs.750.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product" data-id="6" data-name="Emerald Earrings" data-price="950.00">
+        <div class="product-images">
+          <img src="earring6a.jpg" alt="Emerald Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring6a.jpg" alt="Thumb 1" class="active">
+            <img src="earring6b.jpg" alt="Thumb 2">
+            <img src="earring6c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Emerald Earrings</h3>
+          <p class="price">Rs.950.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product" data-id="7" data-name="Ruby Earrings" data-price="650.00">
+        <div class="product-images">
+          <img src="earring7a.jpg" alt="Ruby Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring7a.jpg" alt="Thumb 1" class="active">
+            <img src="earring7b.jpg" alt="Thumb 2">
+            <img src="earring7c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Ruby Earrings</h3>
+          <p class="price">Rs.650.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product" data-id="8" data-name="Platinum Stud Earrings" data-price="800.00">
+        <div class="product-images">
+          <img src="earring8a.jpg" alt="Platinum Stud Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring8a.jpg" alt="Thumb 1" class="active">
+            <img src="earring8b.jpg" alt="Thumb 2">
+            <img src="earring8c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Platinum Stud Earrings</h3>
+          <p class="price">Rs.800.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="product" data-id="9" data-name="Gold Plated Hoop Earrings" data-price="980.00">
+        <div class="product-images">
+          <img src="earring9a.jpg" alt="Gold Plated Hoop Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring9a.jpg" alt="Thumb 1" class="active">
+            <img src="earring9b.jpg" alt="Thumb 2">
+            <img src="earring9c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Gold Plated Hoop Earrings</h3>
+          <p class="price">Rs.980.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="product" data-id="10" data-name="Sterling Silver Earrings" data-price="900.00">
+        <div class="product-images">
+          <img src="earring10a.jpg" alt="Sterling Silver Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring10a.jpg" alt="Thumb 1" class="active">
+            <img src="earring10b.jpg" alt="Thumb 2">
+            <img src="earring10c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Sterling Silver Earrings</h3>
+          <p class="price">Rs.900.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="product" data-id="11" data-name="Rose Gold Earrings" data-price="780.00">
+        <div class="product-images">
+          <img src="earring11a.jpg" alt="Rose Gold Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring11a.jpg" alt="Thumb 1" class="active">
+            <img src="earring11b.jpg" alt="Thumb 2">
+            <img src="earring11c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Rose Gold Earrings</h3>
+          <p class="price">Rs.780.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 12 -->
+      <div class="product" data-id="12" data-name="Turquoise Earrings" data-price="880.00">
+        <div class="product-images">
+          <img src="earring12a.jpg" alt="Turquoise Earrings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earring12a.jpg" alt="Thumb 1" class="active">
+            <img src="earring12b.jpg" alt="Thumb 2">
+            <img src="earring12c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Turquoise Earrings</h3>
+          <p class="price">Rs.880.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 13 -->
+      <div class="product" data-id="13" data-name="Aurora Hoops" data-price="750.00">
+        <div class="product-images">
+          <img src="earing13a.jpg" alt="Aurora Hoops" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earing13a.jpg" alt="Thumb 1" class="active">
+            <img src="earing13b.jpg" alt="Thumb 2">
+            <img src="earing13c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Aurora Hoops</h3>
+          <p class="price">Rs.750.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 14 -->
+      <div class="product" data-id="14" data-name="Celestial Wings" data-price="650.00">
+        <div class="product-images">
+          <img src="earing14a.jpg" alt="Celestial Wings" class="main-image">
+          <div class="thumbnail-row">
+            <img src="earing14a.jpg" alt="Thumb 1" class="active">
+            <img src="earing14b.jpg" alt="Thumb 2">
+            <img src="earing14c.jpg" alt="Thumb 3">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>Celestial Wings</h3>
+          <p class="price">Rs.650.00</p>
+          <button class="btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Rings Collection - Coming Soon -->
+  <section id="rings" class="products-section coming-soon">
+    <div class="coming-soon-content">
+      <h2 class="section-title">Rings Collection</h2>
+      <div class="coming-soon-card">
+        <div class="coming-soon-icon">
+          <i class="far fa-gem"></i>
+        </div>
+        <h3>Exquisite Rings Coming Soon</h3>
+        <p>We're crafting a stunning collection of rings that will elevate your style. Sign up to be the first to know when we launch.</p>
+        <form class="coming-soon-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn">Notify Me</button>
+        </form>
+        <div class="countdown">
+          <p>Launching in:</p>
+          <div class="countdown-timer">
+            <div class="countdown-item">
+              <span class="countdown-number" id="days">30</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="hours">12</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="minutes">45</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Necklaces Collection - Coming Soon -->
+  <section id="necklaces" class="products-section coming-soon">
+    <div class="coming-soon-content">
+      <h2 class="section-title">Necklaces Collection</h2>
+      <div class="coming-soon-card">
+        <div class="coming-soon-icon">
+          <i class="fas fa-necklace"></i>
+        </div>
+        <h3>Luxury Necklaces Arriving Soon</h3>
+        <p>Our designer necklaces collection is in production. Join our waitlist for exclusive early access.</p>
+        <form class="coming-soon-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn">Join Waitlist</button>
+        </form>
+        <div class="progress-container">
+          <p>Collection completion:</p>
+          <div class="progress-bar">
+            <div class="progress" style="width: 75%"></div>
+          </div>
+          <span class="progress-percentage">75%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-modal">
+    <div class="modal-content">
+      <button class="close-modal"><i class="fas fa-times"></i></button>
+      <h2>Complete Your Purchase</h2>
+      <form id="payment-form">
+        <div class="form-group">
+          <label for="card-element">Credit or debit card</label>
+          <div id="card-element" class="card-element"></div>
+          <div id="card-errors" role="alert" class="card-errors"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="Your email address">
+        </div>
+        <button type="submit" class="btn submit-payment">Pay Rs<span id="payment-amount">0.00</span></button>
+      </form>
+    </div>
+  </div>
+
+ <!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="contact-pattern"></div>
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-subtitle">We'd love to hear from you</p>
+    
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <form class="contact-form" id="contactForm">
+        <div class="form-header">
+          <h3>Send Us a Message</h3>
+          <div class="form-status" id="formStatus"></div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" required>
+            <div class="error-message" id="nameError"></div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+            <div class="error-message" id="emailError"></div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Your Message <span class="required">*</span></label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+          <div class="error-message" id="messageError"></div>
+        </div>
+        
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary">
+            <span class="btn-text">Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </form>
+      
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>Contact Information</h3>
+          <p class="info-description">Have questions or need assistance? Reach out to our team.</p>
+          
+          <div class="info-items">
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Our Location</h4>
+                <p>123 Jewelry Street, Faisalabad, PK 10001</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Phone Number</h4>
+                <p>+92 314 8622282</p>
+                <p>+92 309 0009205</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>Email Address</h4>
+                <p>hello@prettylittlejewelry.com</p>
+                <p>support@prettylittlejewelry.com</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="info-content">
+                <h4>Working Hours</h4>
+                <p>Monday - Friday: 9AM - 6PM</p>
+                <p>Saturday: 10AM - 4PM</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <a href="https://instagram.com/prettylittlejewelry" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://facebook.com/prettylittlejewelry" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://pinterest.com/prettylittlejewelry" target="_blank" aria-label="Pinterest">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+              <a href="https://wa.me/923338371552" target="_blank" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Shop Section -->
+        <div class="footer-section">
+          <h4 class="footer-heading">Shop <span class="toggle-icon">+</span></h4>
+          <ul class="footer-links">
+            <li><a href="#earrings" class="footer-link">Earrings</a></li>
+            <li><a href="#necklaces" class="footer-link">Necklaces</a></li>
+            <li><a href="#rings" class="footer-link">Rings</a></li>
+            <li><a href="#" class="footer-link">New Arrivals</a></li>
+            <li><a href="#" class="footer-link">Best Sellers</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service -->
+        <div class="footer-section">
+          <h4 class="footer-heading">Customer Service <span class="toggle-icon">+</span></h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Contact Us</a></li>
+            <li><a href="#" class="footer-link">FAQs</a></li>
+            <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+            <li><a href="#" class="footer-link">Size Guide</a></li>
+            <li><a href="#" class="footer-link">Care Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- About Us -->
+        <div class="footer-section">
+          <h4 class="footer-heading">About Us <span class="toggle-icon">+</span></h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Our Story</a></li>
+            <li><a href="#" class="footer-link">Sustainability</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Press</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-section newsletter">
+          <h4 class="footer-heading">Join Our Newsletter</h4>
+          <p class="newsletter-text">Get 15% off your first order and updates on new arrivals.</p>
+          <form class="newsletter-form">
+            <div class="input-group">
+              <input type="email" placeholder="Your email address" required>
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </div>
+            <div class="form-message"></div>
+          </form>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <div class="footer-bottom-content">
+        <p class="copyright">© 2025 Pretty Little Jewelry. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="#" class="legal-link">Privacy Policy</a>
+          <a href="#" class="legal-link">Terms of Service</a>
+          <a href="#" class="legal-link">Cookie Policy</a>
+        </div>
+        <div class="payment-methods">
+          <span class="payment-icon"><i class="fab fa-cc-visa"></i></span>
+          <span class="payment-icon"><i class="fab fa-cc-mastercard"></i></span>
+          <span class="payment-icon"><i class="fab fa-cc-amex"></i></span>
+          <span class="payment-icon"><i class="fab fa-cc-paypal"></i></span>
+          <span class="payment-icon"><i class="fab fa-apple-pay"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+</footer> <script src="script.js"></script>
+ </body>
+  </html> `
